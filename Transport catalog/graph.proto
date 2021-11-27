@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package graph_serialize;
+
+message VertexToName{
+repeated uint32 id = 1;
+repeated string name = 2;
+}
+
+message VertexBeginAndEnd{
+uint32 begin = 1;
+uint32 end = 2;
+}
+
+message NameToVertex{
+repeated string name = 1;
+repeated VertexBeginAndEnd id = 2;
+}
+
+message EdgeForGraf{
+double time = 1;
+int32 span_count = 2;
+string bus_name = 3;
+}
+
+message EdgeInfo{
+repeated uint32 id = 1;
+repeated EdgeForGraf edge = 2;
+}
+
+message IncidenceList {
+repeated uint32 edge_id = 1; 
+}
+
+message Edge {
+uint64 from = 1;
+uint64 to = 2;
+double weight = 3; 
+}
+
+message Graph {
+repeated Edge edges = 1;
+repeated IncidenceList incidience_lists = 2;
+EdgeInfo info = 3;
+NameToVertex name_to = 4;
+VertexToName vertex_to = 5;
+}
+
+

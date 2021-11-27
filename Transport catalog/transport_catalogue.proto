@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+import public "graph.proto";
+
+package transport_set;
+
+message Coordinates{
+    double lat = 1;
+    double lng = 2;
+}
+
+message DistanceBetweenStops{
+    int32 stop_from = 1;
+    int32 stop_to = 2;
+    double distance = 3;
+}
+
+message Bus{
+string number_bus = 1;
+bool circl = 2;
+repeated uint32 index_stops = 3;
+}
+
+message Stop{
+string name_bus_stop = 1;
+Coordinates cordinates = 2;
+}
+
+message Point{
+double x = 1;
+double y = 2;
+}
+
+message Render_settings{
+double width = 1;
+double height = 2;
+double padding = 3;
+double line_width = 4;
+double stop_radius = 5;
+int32 bus_lable_font_size = 6;
+Point bus_lable_offset = 7;
+int32 stop_lable_font_size = 8;
+Point stop_label_offset = 9;
+string underlayer_color_string = 10;
+double underlayer_width = 11;
+repeated string palette_string = 12;
+}
+
+message Transport_set{
+repeated Bus buses = 1;
+repeated Stop stops = 2;
+repeated DistanceBetweenStops distance = 3;
+Render_settings ren = 4;
+graph_serialize.Graph graph = 5;
+}
